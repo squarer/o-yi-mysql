@@ -1,5 +1,5 @@
 const beforeAction = require('../beforeAction/beforeAction.js')
-
+const path = require('path')
 const period = require('../controllers/period.js')
 
 const route = {
@@ -36,4 +36,8 @@ module.exports = function (app) {
     })
     app.use('/' + key, router)
   }
+
+  app.get('/socket_playground', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+  })
 }

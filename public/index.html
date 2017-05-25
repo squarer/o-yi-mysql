@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>socket</title>
+    <style>
+      .content {
+        max-width: 600px;
+        padding: 40px 16px 40px 16px;
+        margin: 0 auto;
+      }
+      #msg {
+        width: 100%;
+        height: 50px;
+        padding: 16px;
+        font-size: 20px;
+      }
+      #message::before {
+        content: 'keycode: ';
+      }
+      #message {
+        font-size: 20px;
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <input type="text" id="msg">
+      <span id="message"></span>
+    </div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io()
+    document.querySelector('#msg').addEventListener('keypress', function(e) {
+      socket.emit('type', e.keyCode)
+    }, false)
+
+    socket.on('keycode', function(data) {
+      document.querySelector('#message').innerHTML = data
+    })
+  </script>
+</html>
