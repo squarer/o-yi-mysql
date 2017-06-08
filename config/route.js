@@ -38,6 +38,6 @@ module.exports = function (app) {
   }
 
   app.get('/socket_playground', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+    res.sendFile(path.join(__dirname, '../public', 'socket_playground.html'));
   })
 }
