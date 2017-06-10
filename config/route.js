@@ -40,4 +40,8 @@ module.exports = function (app) {
   app.get('/socket_playground', function(req, res) {
     res.sendFile(path.join(__dirname, '../public', 'socket_playground.html'));
   })
+
+  app.get('/', function(req, res) {
+    res.render('index')
+  })
 }
