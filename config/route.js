@@ -1,6 +1,7 @@
 const beforeAction = require('../beforeAction/beforeAction.js')
 const path = require('path')
 const period = require('../controllers/period.js')
+const userGroup = require('../controllers/userGroup.js')
 
 const route = {
   periods: [
@@ -9,6 +10,13 @@ const route = {
     ['post', '/', period.create],
     ['put', '/:id', period.update],
     ['delete', '/:id', period.delete],
+  ],
+  userGroup: [
+    ['get', '/', userGroup.find],
+    ['get', '/:id', userGroup.findOne],
+    ['post', '/', userGroup.create],
+    ['put', '/:id', userGroup.update],
+    ['delete', '/:id', userGroup.delete],
   ],
 }
 
