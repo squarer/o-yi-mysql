@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     user_group: DataTypes.INTEGER,
-    is_valid: DataTypes.BOOLEAN,
+    is_valid: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: 1
+    },
   })
 
   return User;
