@@ -15,7 +15,7 @@
     "dialect": "mysql",
     "define": {
       "freezeTableName": true,
-      "underscored": true,
+      "underscored": true
     }
   },
   "redis": {
