@@ -20,5 +20,6 @@
   },
   "redis": {
     "port": ""
-  }
+  },
+  "secret": "my_secret_string"
 }

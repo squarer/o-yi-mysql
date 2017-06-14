@@ -25,6 +25,7 @@ const route = {
     ['post', '/', user.create],
     ['put', '/:id', user.update],
     ['delete', '/:id', user.delete],
+    ['post', '/signIn', user.login]
   ],
 }
 

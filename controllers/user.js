@@ -1,5 +1,7 @@
 const User = require('../models').user
 const helper = require('../helper/helper.js')
+const jwt = require('jwt-simple')
+const config = require('../config/config.json')
 
 module.exports = {
   find: async(req, res) => {
@@ -56,6 +58,30 @@ module.exports = {
       } else {
         return res.send({ message: `id:${req.params.id} is not exists` })
       }
+    } catch (err) {
+      return helper.err(err, res)
+    }
+  },
+  login: async(req, res) => {
+    try {
+      const user = await User.findOne({ where: { email: req.body.email }})
+      if (!user) {
+        return res.status(404).send({ message: 'user not exist' })
+      }
+
+      if (!user.passwordVerify(req.body.password)) {
+        return res.status(401).send({ message: 'password not match' })
+      }
+
+      const expireAt = new Date()
+      expireAt.setDate(expireAt.getDate() + 1)
+      const token = jwt.encode({
+        userId: user.id,
+        expireAt: expireAt
+      }, config.secret)
+      res.header('x-access-token', token)
+
+      return res.send(user)
     } catch (err) {
       return helper.err(err, res)
     }

@@ -6,7 +6,7 @@ const saltRounds = 10
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define('user', {
     name: { type: DataTypes.STRING, allowNull: false },
-    email: { type: DataTypes.STRING, allowNull: false },
+    email: { type: DataTypes.STRING, allowNull: false, unique: true },
     password: { type: DataTypes.STRING, allowNull: false },
     user_group: { type: DataTypes.INTEGER, allowNull: false },
     is_valid: { type: DataTypes.BOOLEAN, defaultValue: 1 },
@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
     return bcrypt.hash(user.password, saltRounds).then(function(hash) {
       user.password = hash
     })
+  }
+
+  User.prototype.passwordVerify = function (password) {
+    return bcrypt.compareSync(password, this.password);
   }
 
   return User
