@@ -11,6 +11,12 @@ module.exports = {
         })
       }
 
+      if (err.message) {
+        return res.status(400).send({
+          message: err.message
+        })
+      }
+
       return res.status(400).send({
         message: err
       })

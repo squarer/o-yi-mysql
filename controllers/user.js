@@ -64,6 +64,10 @@ module.exports = {
   },
   login: async(req, res) => {
     try {
+      if (!req.body.email || !req.body.password) {
+        return res.status(400).send({ message: 'both email and password required' })
+      }
+
       const user = await User.findOne({ where: { email: req.body.email }})
       if (!user) {
         return res.status(404).send({ message: 'user not exist' })
