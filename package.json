@@ -9,6 +9,7 @@
     "test-integration": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/integration/*.test.js"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "debug": "~2.2.0",
