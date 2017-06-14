@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 module.exports = function(sequelize, DataTypes) {
-  var period = sequelize.define('period', {
+  const period = sequelize.define('period', {
     result: DataTypes.STRING
   }, {
     classMethods: {
@@ -8,6 +8,6 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
       }
     }
-  });
-  return period;
-};
+  })
+  return period
+}

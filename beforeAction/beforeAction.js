@@ -1,5 +1,5 @@
 module.exports = {
-  offSetAndLimit: function (req, res, next) {
+  offSetAndLimit: function(req, res, next) {
     if (req.query.offset) {
       req.query.skip = parseInt(req.query.offset || 0)
     } else {
@@ -8,7 +8,7 @@ module.exports = {
     req.query.limit = parseInt(req.query.limit || 30)
     next()
   },
-  removeInput: function (req, res, next) {
+  removeInput: function(req, res, next) {
     delete req.body.updatedAt
     delete req.body.createdAt
     delete req.body.id

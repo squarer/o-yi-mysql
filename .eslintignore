@@ -1,0 +1,6 @@
+README.md
+*.paw
+test/*
+*.sqlite
+migrations/
+seeders/

@@ -29,7 +29,7 @@ const route = {
 }
 
 
-module.exports = function (app) {
+module.exports = function(app) {
   //beforeAction
   app.all('*', beforeAction.offSetAndLimit)
   app.all('*', beforeAction.removeInput)
@@ -38,7 +38,7 @@ module.exports = function (app) {
   for (const key in route) {
     const router = express.Router()
     const array = route[key]
-    array.forEach(function (value) {
+    array.forEach(function(value) {
       if (value.length > 3) {
         for (let i = 3; i < value.length; i++) {
           if (typeof value[i] === 'function') {
@@ -54,7 +54,7 @@ module.exports = function (app) {
   }
 
   app.get('/socket_playground', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public', 'socket_playground.html'));
+    res.sendFile(path.join(__dirname, '../public', 'socket_playground.html'))
   })
 
   app.get('/', function(req, res) {

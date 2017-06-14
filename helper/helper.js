@@ -1,5 +1,5 @@
 module.exports = {
-  err: function (err, res) {
+  err: function(err, res) {
     if (err) {
       if (err.errors) {
         const message = []
@@ -16,7 +16,7 @@ module.exports = {
       })
     }
   },
-  errHandler: function (result, res, callback) {
+  errHandler: function(result, res, callback) {
     if (!result) {
       res.status(404).send({
         message: 'not found'
