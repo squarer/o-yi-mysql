@@ -4,8 +4,8 @@ const favicon = require('serve-favicon')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
-
-const periods = require('./config/route.js')
+const cors = require('cors')
+const corsConfig = require('./config/cors.js')
 
 const app = express()
 
@@ -20,6 +20,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(cors(corsConfig))
 
 require('./config/route.js')(app)
 

@@ -89,5 +89,15 @@ module.exports = {
     } catch (err) {
       return helper.err(err, res)
     }
+  },
+  verify: async(req, res) => {
+    try {
+      const result = await User.findOne({ where: { id: req.body.userId }})
+
+      return res.send(result)
+    } catch (err) {
+      return helper.err(err, res)
+    }
+
   }
 }

@@ -1,4 +1,5 @@
 const beforeAction = require('../beforeAction/beforeAction.js')
+const jwt = require('../beforeAction/jwt.js')
 const path = require('path')
 const period = require('../controllers/period.js')
 const userGroup = require('../controllers/userGroup.js')
@@ -25,8 +26,11 @@ const route = {
     ['post', '/', user.create],
     ['put', '/:id', user.update],
     ['delete', '/:id', user.delete],
-    ['post', '/signIn', user.login]
+    ['post', '/signIn', user.login],
   ],
+  token: [
+    ['get', '/verify', user.verify, jwt.verify]
+  ]
 }
 
 
